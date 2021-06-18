@@ -1,4 +1,4 @@
 node_modules
 .env
-*.jpg
-*.jpeg
+uploads/productos/**.*
+uploads/usuarios/**.*

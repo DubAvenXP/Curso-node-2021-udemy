@@ -4,7 +4,6 @@ const { dbConnection } = require('../database/config');
 const fileUpload = require('express-fileupload');
 class Server {
 
-
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
@@ -27,19 +26,20 @@ class Server {
         this.routes();
     }
 
-    async conectarDB(){
+    async conectarDB() {
         await dbConnection();
     }
     //Middlewares a nivel de servidor
-    middlewares(){
+    middlewares() {
         this.app.use(cors());
         this.app.use(express.json());
         this.app.use(express.static('public'));
-        
+
         // Fileupload - carga de archivos
         this.app.use(fileUpload({
-            useTempFiles : true,
-            tempFileDir : '/tmp/'
+            useTempFiles: true,
+            tempFileDir: '/tmp/',
+            createParentPath: true
         }));
     }
 
